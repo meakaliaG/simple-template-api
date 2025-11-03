@@ -18,7 +18,38 @@
 </head>
 <body>
     <a href="/">Return to Search</a>
+    <div>
+      <h2>Search results for:</h2>
+      {{#if search.title}}
+        <span>Title: {{search.title}}</span>
+      {{/if}}
 
+      {{#if search.year}}
+        <span>Year: {{search.year}}</span>
+      {{/if}}
+
+      {{#if search.starring}}
+        <span>Starring: {{search.starring}}</span>
+      {{/if}}
+    </div>
+
+    {{#if movies}}
+      {{#each movies}}
+        <div class="movie">
+          <p>Title: {{this.title}}</p>
+          <p>Year: {{this.year}}</p>
+          <p>Cast:</p>
+          <ul>
+            {{#each this.cast}}
+              <li>{{this}}</li>
+            {{/each}}
+          </ul>
+        </div>
+      {{/each}}
+
+    {{else}}
+      <p>No results found!</p>
+    {{/if}}
     
 </body>
 </html>
